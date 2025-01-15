@@ -8,11 +8,11 @@ const textFile = fs.createWriteStream(
 );
 
 stdout.write('What do you like?\n');
-stdin.on('data', (input) => {
-  if (input.toString().toLocaleLowerCase() === 'exit') {
+stdin.on('data', (data) => {
+  if (data.toString().trim().toLowerCase() === 'exit') {
     process.exit();
   } else {
-    textFile.write(input);
+    textFile.write(data);
     console.log('added! next >');
   }
 });
